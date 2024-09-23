@@ -28,6 +28,9 @@ class Tokenizer {
    * \returns The encoded token ids.
    */
   virtual std::vector<int32_t> Encode(const std::string& text) = 0;
+  virtual std::vector<int32_t> Encode(const std::string &text, bool add_special_tokens) {
+    return Encode(text);
+  };
 
   /*!
    * \brief Encode a batch of texts into ids.
