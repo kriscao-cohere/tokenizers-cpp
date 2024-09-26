@@ -144,6 +144,6 @@ add_subdirectory(sentencepiece sentencepiece EXCLUDE_FROM_ALL)
 add_library(tokenizers_c INTERFACE ${TOKENIZERS_RUST_LIB})
 target_link_libraries(tokenizers_c INTERFACE ${TOKENIZERS_RUST_LIB} ${TOKENIZERS_C_LINK_LIBS})
 
-add_library(tokenizers_cpp SHARED $<TARGET_OBJECTS:tokenizer_cpp_objs>)
-target_link_libraries(tokenizers_cpp PRIVATE tokenizers_c sentencepiece-static ${TOKENIZERS_CPP_LINK_LIBS})
+add_library(tokenizers_cpp STATIC $<TARGET_OBJECTS:tokenizer_cpp_objs>)
+target_link_libraries(tokenizers_cpp PUBLIC tokenizers_c sentencepiece-static ${TOKENIZERS_CPP_LINK_LIBS})
 target_include_directories(tokenizers_cpp PUBLIC ${TOKENIZERS_CPP_INCLUDE})
